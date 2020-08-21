@@ -1,0 +1,13 @@
+pre-push:
+  commands:
+    packages-audit:
+      tags: frontend security
+      run: npm audit
+
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      root: "src"
+      glob: "*.{js,ts}"
+      run: npx eslint {staged_files}
